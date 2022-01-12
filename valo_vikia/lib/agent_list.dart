@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:valo_vikia/agent_item.dart';
 import 'package:valo_vikia/data/agent_strings.dart';
 import 'package:valo_vikia/models/agent.dart';
 
@@ -6,8 +7,6 @@ class AgentList extends StatelessWidget {
   late List<Agent> agents;
   AgentList() {
     agents = getAgentsData();
-
-    print(agents);
   }
 
   @override
@@ -17,7 +16,12 @@ class AgentList extends StatelessWidget {
         title: Text('ValoVikia'),
       ),
       body: Center(
-        child: Text("Agents Area"),
+        child: ListView.builder(
+          itemBuilder: (context, index) {
+            return AgentItem(agentInfo: agents[index]);
+          },
+          itemCount: agents.length,
+        ),
       ),
     );
   }

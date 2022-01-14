@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:valo_vikia/agent_detail.dart';
 import 'package:valo_vikia/models/agent.dart';
 
 class AgentItem extends StatelessWidget {
@@ -10,6 +11,12 @@ class AgentItem extends StatelessWidget {
     return Card(
       elevation: 4,
       child: ListTile(
+        onTap: (){
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => AgentDetail(agentModel: agentInfo),
+            ),
+          );
+        },
         leading: Image.asset(
           "images/" + agentInfo.agentAvatar,
         ),
